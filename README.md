@@ -4,6 +4,8 @@
 
 **Live demo on GitHub Pages:** https://matronator.github.io/ThemeGenerator/
 
+[[https://github.com/matronator/ThemeGenerator/preview.png|alt=Preview]]
+
 ## Features
 
 - [x] Generate random theme (colors, font sizes, margins/paddings, top nav position)
