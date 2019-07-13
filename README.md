@@ -20,4 +20,4 @@
 
 **Live demo on GitHub Pages:** https://matronator.github.io/ThemeGenerator/
 
-![Theme Generator Preview](preview.gif "Title")
+![Theme Generator Preview](https://github.com/matronator/ThemeGenerator/blob/master/preview.gif?raw=true "Theme Generator Preview")
