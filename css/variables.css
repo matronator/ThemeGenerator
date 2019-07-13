@@ -1,0 +1,33 @@
+:root {
+  --primary: #0080ff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+
+  --font-family-h: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-p: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-nav: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  --nav-font-weight: 500; /* 100 - 900 */
+
+  --navbar-padding-x: 15px; /* 0px - 30px */
+  --navbar-padding-y: 10px; /* 0px - 20px */
+
+  --header-height: 75vh; /* 65vh - 80vh */
+  --header-title-size: 4.5em; /* 3.75em - 4.5em */
+  --header-title-weight: 500; /* 100 - 900 */
+
+  --section-padding-x: 10px;
+  --section-padding-y: 100px;
+  --section-title-size: 2.2em; /* 2.2em - 2.75em */
+  --section-title-weight: 500; /* 100 - 900 */
+
+  --underline-width: 60px; /* 60px - 120px */
+  --underline-border: 3px; /* 1px - 3px */
+  --underline-margin-top: 20px;
+  --underline-margin-bottom: 20px;
+}

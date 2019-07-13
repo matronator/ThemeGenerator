@@ -1,0 +1,21 @@
+#overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: auto;
+  height: auto;
+  padding: 20px 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 0.785rem;
+  z-index: 1000;
+  opacity: 0.5;
+  transition: opacity ease 300ms;
+  -webkit-transition: opacity ease 300ms;
+  -moz-transition: opacity ease 300ms;
+  -ms-transition: opacity ease 300ms;
+  -o-transition: opacity ease 300ms;
+}
+
+#overlay:hover, #overlay:focus {
+  opacity: 1;
+}

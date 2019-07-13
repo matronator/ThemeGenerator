@@ -1,0 +1,56 @@
+<div id="overlay" class="bg-light border border-dark rounded">
+  <div class="container">
+    <div class="collapse" id="controlSettings">
+      <h4 class="plugin-title">Theme Generator <span class="text-muted">0.2</span></h4>
+      <div class="row">
+        <div class="d-flex flex-column text-right p-2 m-2 border border-secondary rounded" id="control-fonts">
+          <label class="plugin-lbl" for="hfont" id="lbl-font-h">
+            Headings font:&nbsp;
+            <select id="select-font-h" name="hfont" class="select">
+              <option id="font-h-default" value="Bootstrap default">Bootstrap default</option>
+              <option id="font-h-monserrat" value="Montserrat">Montserrat</option>
+              <option id="font-h-raleway" value="Raleway">Raleway</option>
+              <option id="font-h-roboto" value="Roboto">Roboto</option>
+            </select>
+          </label>
+          <label class="plugin-lbl" for="navfont" id="lbl-font-nav">
+            Top menu font:&nbsp;
+            <select id="select-font-nav" name="navfont" class="select">
+              <option id="font-nav-default" value="Bootstrap default">Bootstrap default</option>
+              <option id="font-nav-monserrat" value="Montserrat">Montserrat</option>
+              <option id="font-nav-raleway" value="Raleway">Raleway</option>
+              <option id="font-nav-roboto" value="Roboto">Roboto</option>
+            </select>
+          </label>
+          <label class="plugin-lbl" for="pfont" id="lbl-font-p">
+            Paragraphs font:&nbsp;
+            <select id="select-font-p" name="pfont" class="select">
+              <option id="font-p-default" value="Bootstrap default">Bootstrap default</option>
+              <option id="font-p-monserrat" value="Montserrat">Montserrat</option>
+              <option id="font-p-raleway" value="Raleway">Raleway</option>
+              <option id="font-p-roboto" value="Roboto">Roboto</option>
+            </select>
+          </label>
+        </div>
+        <div class="d-flex flex-column text-right p-2 m-2 border border-secondary rounded" id="control-weight">
+          <label class="plugin-lbl" id="lbl-weight-header">
+            Header title weight:&nbsp;
+            <input type="number" id="font-weight-header" step="100" min="100" max="900" value="500">
+          </label>
+          <label class="plugin-lbl" id="lbl-weight-nav">
+            Menu items weight:&nbsp;
+            <input type="number" id="font-weight-nav" step="100" min="100" max="900" value="500">
+          </label>
+          <label class="plugin-lbl" id="lbl-weight-section">
+            Section title weight:&nbsp;
+            <input type="number" id="font-weight-section" step="100" min="100" max="900" value="500">
+          </label>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-sm btn-secondary" id="btn-generate">Generate random style</button>
+    <div class="btn-group" data-toggle="button">
+      <button class="btn btn-sm btn-secondary" data-toggle="collapse" data-target="#controlSettings" type="button" aria-expanded="false" aria-controls="controlSettings">Customize</button>
+    </div>
+  </div>
+</div>

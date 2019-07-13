@@ -1,0 +1,71 @@
+#page-top {
+  font-family: var(--font-family-p);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-h);
+}
+
+.navbar-brand {
+  padding-right: 20px;
+  font-family: var(--font-family-nav);
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family-nav);
+  padding-top: var(--navbar-padding-y);
+  padding-bottom: var(--navbar-padding-y);
+}
+
+.navbar-nav .nav-item {
+  font-weight: var(--nav-font-weight);
+  padding-left: var(--navbar-padding-x);
+}
+
+header {
+  height: var(--header-height);
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-title {
+  font-size: var(--header-title-size);
+  font-weight: var(--header-title-weight);
+  padding-bottom: 20px;
+}
+
+section.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+.section-title {
+  text-align: center;
+  font-size: var(--section-title-size);
+  font-weight: var(--section-title-weight);
+}
+
+.underline {
+  max-width: var(--underline-width);
+  margin-top: var(--underline-margin-top);
+  margin-bottom: var(--underline-margin-bottom);
+  border-bottom: 2px solid #000000;
+  border-width: var(--underline-border);
+}
+.underline-primary {
+  border-color: var(--primary);
+}
+.underline-secondary {
+  border-color: var(--secondary);
+}
+
+footer.footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
