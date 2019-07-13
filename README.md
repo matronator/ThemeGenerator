@@ -1,6 +1,8 @@
 # Theme Generator
 
-(Experimental) plugin that generates random website theme using Bootstrap.
+*(Experimental)* plugin that generates random website theme using Bootstrap.
+
+**Live demo on GitHub Pages:** https://matronator.github.io/ThemeGenerator/
 
 ## Features
 
