@@ -15,7 +15,7 @@ jquerySrc.setAttribute("src","/vendor/jquery/jquery.min.js");
 bootstrapSrc.setAttribute("src","/vendor/bootstrap/js/bootstrap.bundle.min.js");
 easingSrc.setAttribute("src","/vendor/jquery-easing/jquery.easing.min.js");
 scrollingSrc.setAttribute("src","/js/scrolling-nav.js"); */
-changeStyleSrc.setAttribute("src","/js/change-style.js");
+changeStyleSrc.setAttribute("src","./js/change-style.js");
 
 document.body.innerHTML = navbar + header + content + footer + pluginControls;
 /*
