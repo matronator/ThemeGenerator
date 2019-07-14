@@ -1,11 +1,15 @@
 var changer = document.getElementById("btn-generate");
 var root = document.documentElement;
 var navbarNav = document.getElementById("mainUl");
+var navPositionSpan = document.getElementById("menuAlignPosition");
+var navPositionSwitch = document.getElementById("menuAlignSwitch");
+var navPositionLock = document.getElementById("menu-align-lock");
 
 var selectFontH = document.getElementById("select-font-h");
 var selectFontNav = document.getElementById("select-font-nav");
 var selectFontP = document.getElementById("select-font-p");
 
+var fontWeightLock = document.getElementById("font-weight-lock");
 var fontWeightHeader = document.getElementById("font-weight-header");
 var fontWeightNav = document.getElementById("font-weight-nav");
 var fontWeightSection = document.getElementById("font-weight-section");
@@ -118,9 +122,11 @@ function changeSectionTitleSize() {
 }
 
 function changeSectionTitleWeight() {
-  var sectionTitleWeight = getRandomRangeInt(1, 10) * 100;
-  root.style.setProperty("--section-title-weight", sectionTitleWeight);
-  fontWeightSection.value = sectionTitleWeight;
+  if (!fontWeightLock.checked) {
+    var sectionTitleWeight = getRandomRangeInt(1, 10) * 100;
+    root.style.setProperty("--section-title-weight", sectionTitleWeight);
+    fontWeightSection.value = sectionTitleWeight;
+  }
 }
 
 function changeSectionTitle() {
@@ -131,22 +137,49 @@ function changeSectionTitle() {
 
 // #region Menu
 function changeNavbarTitleWeight() {
-  var navbarTitleWeight = getRandomRangeInt(1, 10) * 100;
-  root.style.setProperty("--nav-font-weight", navbarTitleWeight);
-  fontWeightNav.value = navbarTitleWeight;
+  if (!fontWeightLock.checked) {
+    var navbarTitleWeight = getRandomRangeInt(1, 10) * 100;
+    root.style.setProperty("--nav-font-weight", navbarTitleWeight);
+    fontWeightNav.value = navbarTitleWeight;
+  }
 }
 
-function menuAlign() {
-  var navAlign = getRandomInt(2);
-  if (navAlign === 0) {
-    navbarNav.classList.remove("mr-auto");
-    navbarNav.classList.add("ml-auto");
+// #region MenuAlign
+function menuAlignRight() {
+  navbarNav.classList.remove("mr-auto");
+  navbarNav.classList.add("ml-auto");
+  navPositionSpan.innerText = "right";
+}
+function menuAlignLeft() {
+  navbarNav.classList.remove("ml-auto");
+  navbarNav.classList.add("mr-auto");
+  navPositionSpan.innerText = "left";
+}
+
+navPositionSwitch.addEventListener("change", function(event) {
+  if (navPositionSwitch.checked == false) {
+    menuAlignLeft();
+  } else {
+    menuAlignRight();
   }
-  else {
-    navbarNav.classList.remove("ml-auto");
-    navbarNav.classList.add("mr-auto");
+});
+
+
+function menuAlign() {
+  if (!navPositionLock.checked) {
+    var navAlign = getRandomInt(2);
+    if (navAlign === 0) {
+      navPositionSwitch.checked = true;
+      menuAlignRight();
+    }
+    else {
+      navPositionSwitch.checked = false;
+      menuAlignLeft();
+    }
   }
 }
+
+// #endregion MenuAlign
 
 function changeNavbarPadding() {
   var navbarPaddingX = getRandomRangeInt(0, 31);
@@ -175,9 +208,11 @@ function changeHeaderTitleSize() {
 }
 
 function changeHeaderTitleWeight() {
-  var headerTitleWeight = getRandomRangeInt(1, 10) * 100;
-  root.style.setProperty("--header-title-weight", headerTitleWeight);
-  fontWeightHeader.value = headerTitleWeight;
+  if (!fontWeightLock.checked) {
+    var headerTitleWeight = getRandomRangeInt(1, 10) * 100;
+    root.style.setProperty("--header-title-weight", headerTitleWeight);
+    fontWeightHeader.value = headerTitleWeight;
+  }
 }
 
 function changeHeaderTitle() {

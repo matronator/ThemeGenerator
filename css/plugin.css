@@ -19,3 +19,14 @@
 #overlay:hover, #overlay:focus {
   opacity: 1;
 }
+
+#overlay div.row {
+  align-items: stretch;
+}
+
+#overlay .unselectable {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
