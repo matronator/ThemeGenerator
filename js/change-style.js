@@ -1,7 +1,80 @@
+function hexToHSL(hexValue) {
+  // Convert hex to RGB first
+  let r = 0, g = 0, b = 0;
+  if (hexValue.length == 4) {
+    r = "0x" + hexValue[1] + hexValue[1];
+    g = "0x" + hexValue[2] + hexValue[2];
+    b = "0x" + hexValue[3] + hexValue[3];
+  } else if (hexValue.length == 7) {
+    r = "0x" + hexValue[1] + hexValue[2];
+    g = "0x" + hexValue[3] + hexValue[4];
+    b = "0x" + hexValue[5] + hexValue[6];
+  }
+  
+  // Then to HSL
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  let cmin = Math.min(r,g,b),
+      cmax = Math.max(r,g,b),
+      delta = cmax - cmin,
+      h = 0,
+      s = 0,
+      l = 0;
+
+  if (delta == 0) {
+    h = 0;
+  } else if (cmax == r) {
+    h = ((g - b) / delta) % 6;
+  } else if (cmax == g) {
+    h = (b - r) / delta + 2;
+  } else {
+    h = (r - g) / delta + 4;
+  }
+
+  h = Math.round(h * 60);
+
+  if (h < 0) {
+    h += 360;
+  }
+
+  l = (cmax + cmin) / 2;
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+
+  return {
+    hue: h,
+    saturation: s,
+    lightness: l
+  };
+}
+
 $(document).ready(function() {
 
-  var changer = document.getElementById("btn-generate");
+  const changer = document.getElementById("btn-generate");
   var root = document.documentElement;
+
+  var primaryColor = getComputedStyle(root).getPropertyValue("--primary");
+  console.log(primaryColor);
+  console.log(hexToHSL(primaryColor));
+
+  var primaryHue = hexToHSL(primaryColor).hue;
+  var primaryLightness = hexToHSL(primaryColor).lightness;
+  var primarySaturation = hexToHSL(primaryColor).saturation;
+
+  var colorInputHue = document.getElementById("color-input-hue");
+  var colorSliderHue = document.getElementById("color-slider-hue");
+  colorInputHue.value = primaryHue;
+  colorSliderHue.value = primaryHue;
+  var colorInputLightness = document.getElementById("color-input-lightness");
+  var colorSliderLightness = document.getElementById("color-slider-lightness");
+  colorInputLightness = primaryLightness;
+  colorSliderLightness = primaryLightness;
+  var colorInputSaturation = document.getElementById("color-input-saturation");
+  var colorSliderSaturation = document.getElementById("color-slider-saturation");
+  colorInputSaturation = primarySaturation;
+  colorSliderSaturation = primarySaturation;
 
   // #region LockIcons
 
@@ -14,24 +87,24 @@ $(document).ready(function() {
 
   // #region NavbarDeclaration
 
-  var navbarNav = document.getElementById("mainUl");
-  var navPositionSpan = document.getElementById("menuAlignPosition");
-  var navPositionSwitch = document.getElementById("menuAlignSwitch");
-  var navPositionLock = document.getElementById("menu-align-lock");
+  const navbarNav = document.getElementById("mainUl");
+  const navPositionSpan = document.getElementById("menuAlignPosition");
+  const navPositionSwitch = document.getElementById("menuAlignSwitch");
+  const navPositionLock = document.getElementById("menu-align-lock");
 
   // #endregion NavbarDeclaration
 
-  var selectFontH = document.getElementById("select-font-h");
-  var selectFontNav = document.getElementById("select-font-nav");
-  var selectFontP = document.getElementById("select-font-p");
+  const selectFontH = document.getElementById("select-font-h");
+  const selectFontNav = document.getElementById("select-font-nav");
+  const selectFontP = document.getElementById("select-font-p");
 
-  var fontWeightHeader = document.getElementById("font-weight-header");
-  var fontWeightNav = document.getElementById("font-weight-nav");
-  var fontWeightSection = document.getElementById("font-weight-section");
+  const fontWeightHeader = document.getElementById("font-weight-header");
+  const fontWeightNav = document.getElementById("font-weight-nav");
+  const fontWeightSection = document.getElementById("font-weight-section");
 
-  var weightHeaderLock = document.getElementById("weight-header-lock");
-  var weightNavLock = document.getElementById("weight-nav-lock");
-  var weightSectionLock = document.getElementById("weight-section-lock");
+  const weightHeaderLock = document.getElementById("weight-header-lock");
+  const weightNavLock = document.getElementById("weight-nav-lock");
+  const weightSectionLock = document.getElementById("weight-section-lock");
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -114,9 +187,9 @@ $(document).ready(function() {
 
   // #region Colors
   function changeColors() {
-    var primaryHue = getRandomInt(360);
-    var primarySaturation = getRandomRangeInt(75, 101);
-    var primaryLightness = getRandomRangeInt(30, 71);
+    primaryHue = getRandomInt(360);
+    primarySaturation = getRandomRangeInt(75, 101);
+    primaryLightness = getRandomRangeInt(30, 71);
     root.style.setProperty("--primary", "hsl(" + primaryHue + "," + primarySaturation + "%," + primaryLightness + "%)");
     root.style.setProperty("--light", "hsl(" + primaryHue + "," + getRandomRangeInt(0, 16) + "%," + getRandomRangeInt(92, 98) + "%)");
     root.style.setProperty("--dark", "hsl(" + primaryHue + "," + getRandomRangeInt(0, 41) + "%," + getRandomRangeInt(5, 21) + "%)");
