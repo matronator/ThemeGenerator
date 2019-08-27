@@ -14,6 +14,9 @@
   <!-- Bootstrap core CSS -->
   <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700|Raleway:100,200,300,400,500,600,700|Roboto:300,400,500,700" rel="stylesheet">
 
@@ -153,28 +156,36 @@
               <div class="custom-control custom-switch unselectable text-left">
                 <input type="checkbox" class="custom-control-input" id="menuAlignSwitch" value="unchecked">
                 <label class="custom-control-label" for="menuAlignSwitch">Menu items on the&nbsp;<span id="menuAlignPosition">left</span></label>
+                <label class="plugin-lbl unselectable text-left" id="lbl-menuAlign-lock">
+                  <input type="checkbox" class="lock-checkbox" id="menu-align-lock" value="unchecked">
+                  <i class="fa fa-unlock-alt"></i>
+                </label>
               </div>
-              <label class="plugin-lbl unselectable text-left" id="lbl-menuAlign-lock">
-                <input type="checkbox" id="menu-align-lock" value="unchecked">
-                Lock menu align
-              </label>
             </div>
             <div class="d-flex flex-column text-right p-2 m-1 border border-secondary rounded" id="control-weight">
-              <label class="plugin-lbl unselectable text-left" id="lbl-weight-lock">
-                <input type="checkbox" id="font-weight-lock" value="unchecked">
-                Lock font weights
-              </label>
               <label class="plugin-lbl" id="lbl-weight-header">
                 Header title weight:&nbsp;
                 <input type="number" id="font-weight-header" step="100" min="100" max="900" value="500">
+                <label class="plugin-lbl unselectable text-left" id="lbl-weightHeader-lock">
+                  <input type="checkbox" class="lock-checkbox" id="weight-header-lock" value="unchecked">
+                  <i class="fa fa-unlock-alt"></i>
+                </label>
               </label>
               <label class="plugin-lbl" id="lbl-weight-nav">
                 Menu items weight:&nbsp;
                 <input type="number" id="font-weight-nav" step="100" min="100" max="900" value="500">
+                <label class="plugin-lbl unselectable text-left" id="lbl-weightNav-lock">
+                  <input type="checkbox" class="lock-checkbox" id="weight-nav-lock" value="unchecked">
+                  <i class="fa fa-unlock-alt"></i>
+                </label>
               </label>
               <label class="plugin-lbl" id="lbl-weight-section">
                 Section title weight:&nbsp;
                 <input type="number" id="font-weight-section" step="100" min="100" max="900" value="500">
+                <label class="plugin-lbl unselectable text-left" id="lbl-weightSection-lock">
+                  <input type="checkbox" class="lock-checkbox" id="weight-section-lock" value="unchecked">
+                  <i class="fa fa-unlock-alt"></i>
+                </label>
               </label>
             </div>
           </div>
