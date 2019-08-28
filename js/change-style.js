@@ -57,25 +57,24 @@ $(document).ready(function() {
   var root = document.documentElement;
 
   var primaryColor = getComputedStyle(root).getPropertyValue("--primary");
-  console.log(primaryColor);
-  console.log(hexToHSL(primaryColor));
 
   var primaryHue = hexToHSL(primaryColor).hue;
   var primaryLightness = hexToHSL(primaryColor).lightness;
   var primarySaturation = hexToHSL(primaryColor).saturation;
 
-  var colorInputHue = document.getElementById("color-input-hue");
-  var colorSliderHue = document.getElementById("color-slider-hue");
+  const colorInputHue = document.getElementById("color-input-hue");
+  const colorSliderHue = document.getElementById("color-slider-hue");
+  const colorInputLightness = document.getElementById("color-input-lightness");
+  const colorSliderLightness = document.getElementById("color-slider-lightness");
+  const colorInputSaturation = document.getElementById("color-input-saturation");
+  const colorSliderSaturation = document.getElementById("color-slider-saturation");
+
   colorInputHue.value = primaryHue;
   colorSliderHue.value = primaryHue;
-  var colorInputLightness = document.getElementById("color-input-lightness");
-  var colorSliderLightness = document.getElementById("color-slider-lightness");
-  colorInputLightness = primaryLightness;
-  colorSliderLightness = primaryLightness;
-  var colorInputSaturation = document.getElementById("color-input-saturation");
-  var colorSliderSaturation = document.getElementById("color-slider-saturation");
-  colorInputSaturation = primarySaturation;
-  colorSliderSaturation = primarySaturation;
+  colorInputLightness.value = primaryLightness;
+  colorSliderLightness.value = primaryLightness;
+  colorInputSaturation.value = primarySaturation;
+  colorSliderSaturation.value = primarySaturation;
 
   // #region LockIcons
 
@@ -187,13 +186,56 @@ $(document).ready(function() {
   // #endregion Font weight
 
   // #region Colors
-  function changeColors() {
-    primaryHue = getRandomInt(360);
-    primarySaturation = getRandomRangeInt(75, 101);
-    primaryLightness = getRandomRangeInt(30, 71);
+
+  function changePrimaryColor() {
     root.style.setProperty("--primary", "hsl(" + primaryHue + "," + primarySaturation + "%," + primaryLightness + "%)");
     root.style.setProperty("--light", "hsl(" + primaryHue + "," + getRandomRangeInt(0, 16) + "%," + getRandomRangeInt(92, 98) + "%)");
     root.style.setProperty("--dark", "hsl(" + primaryHue + "," + getRandomRangeInt(0, 41) + "%," + getRandomRangeInt(5, 21) + "%)");
+  }
+
+  function changeHue(newHue) {
+    if (newHue < 0 || newHue > 360) {
+      newHue = 360;
+    }
+    primaryHue = newHue;
+    colorInputHue.value = primaryHue;
+    colorSliderHue.value = primaryHue;
+    changePrimaryColor();
+  }
+  function changeSaturation(newSaturation) {
+    if (newSaturation < 0 || newSaturation > 100) {
+      newSaturation = 100;
+    }
+    primarySaturation = newSaturation;
+    colorInputSaturation.value = primarySaturation;
+    colorSliderSaturation.value = primarySaturation;
+    changePrimaryColor();
+  }
+  function changeLightness(newLightness) {
+    if (newLightness < 0 || newLightness > 100) {
+      newLightness = 50;
+    }
+    primaryLightness = newLightness;
+    colorInputLightness.value = primaryLightness;
+    colorSliderLightness.value = primaryLightness;
+    changePrimaryColor();
+  }
+
+  $(".control-hue").on("change", function(evenr) {
+    changeHue(this.value);
+  });
+  $(".control-saturation").on("change", function(evenr) {
+    changeSaturation(this.value);
+  });
+  $(".control-lightness").on("change", function(evenr) {
+    changeLightness(this.value);
+  });
+
+  function randomColors() {
+    changeHue(getRandomInt(360));
+    changeSaturation(getRandomRangeInt(75, 101));
+    changeLightness(getRandomRangeInt(30, 71));
+    changePrimaryColor();
   }
 
   // #endregion Colors
@@ -320,7 +362,7 @@ $(document).ready(function() {
   // #endregion Header
 
   function changeAllStyles() {
-    changeColors();
+    randomColors();
 
     changeMenu();
     changeSectionTitle();
