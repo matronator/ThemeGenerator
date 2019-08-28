@@ -1,5 +1,6 @@
 function hexToHSL(hexValue) {
   // Convert hex to RGB first
+  hexValue = hexValue.trim();
   let r = 0, g = 0, b = 0;
   if (hexValue.length == 4) {
     r = "0x" + hexValue[1] + hexValue[1];
