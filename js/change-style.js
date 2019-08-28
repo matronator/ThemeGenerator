@@ -187,10 +187,10 @@ $(document).ready(function() {
 
   // #region Colors
 
-  function changePrimaryColor() {
-    root.style.setProperty("--primary", "hsl(" + primaryHue + "," + primarySaturation + "%," + primaryLightness + "%)");
-    root.style.setProperty("--light", "hsl(" + primaryHue + "," + getRandomRangeInt(0, 16) + "%," + getRandomRangeInt(92, 98) + "%)");
-    root.style.setProperty("--dark", "hsl(" + primaryHue + "," + getRandomRangeInt(0, 41) + "%," + getRandomRangeInt(5, 21) + "%)");
+  function changePrimaryColor(hue, sat, lig) {
+    root.style.setProperty("--primary", "hsl(" + hue + "," + sat + "%," + lig + "%)");
+    root.style.setProperty("--light", "hsl(" + hue + "," + 15 + "%," + 94 + "%)");
+    root.style.setProperty("--dark", "hsl(" + hue + "," + 20 + "%," + 11 + "%)");
   }
 
   function changeHue(newHue) {
@@ -200,7 +200,7 @@ $(document).ready(function() {
     primaryHue = newHue;
     colorInputHue.value = primaryHue;
     colorSliderHue.value = primaryHue;
-    changePrimaryColor();
+    changePrimaryColor(primaryHue, primarySaturation, primaryLightness);
   }
   function changeSaturation(newSaturation) {
     if (newSaturation < 0 || newSaturation > 100) {
@@ -209,7 +209,7 @@ $(document).ready(function() {
     primarySaturation = newSaturation;
     colorInputSaturation.value = primarySaturation;
     colorSliderSaturation.value = primarySaturation;
-    changePrimaryColor();
+    changePrimaryColor(primaryHue, primarySaturation, primaryLightness);
   }
   function changeLightness(newLightness) {
     if (newLightness < 0 || newLightness > 100) {
@@ -218,16 +218,16 @@ $(document).ready(function() {
     primaryLightness = newLightness;
     colorInputLightness.value = primaryLightness;
     colorSliderLightness.value = primaryLightness;
-    changePrimaryColor();
+    changePrimaryColor(primaryHue, primarySaturation, primaryLightness);
   }
 
-  $(".control-hue").on("change", function(evenr) {
+  $(".control-hue").on("input", function(evenr) {
     changeHue(this.value);
   });
-  $(".control-saturation").on("change", function(evenr) {
+  $(".control-saturation").on("input", function(evenr) {
     changeSaturation(this.value);
   });
-  $(".control-lightness").on("change", function(evenr) {
+  $(".control-lightness").on("input", function(evenr) {
     changeLightness(this.value);
   });
 
@@ -235,7 +235,7 @@ $(document).ready(function() {
     changeHue(getRandomInt(360));
     changeSaturation(getRandomRangeInt(75, 101));
     changeLightness(getRandomRangeInt(30, 71));
-    changePrimaryColor();
+    changePrimaryColor(primaryHue, primarySaturation, primaryLightness);
   }
 
   // #endregion Colors
